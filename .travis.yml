@@ -8,5 +8,21 @@ before_install:
 script:
   - docker run -e CI=true robggarcia84/docker-react-rob npm run test
 
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-west-1"
+  app: "docker-react-rob"
+  env: "DockerReactRob-env"
+  bucket_name: "elasticbeanstalk-eu-west-1-606143462493"
+  bucket_path: "docker-react-rob"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
+
+
+
+
 
 
